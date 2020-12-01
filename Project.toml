@@ -1,0 +1,15 @@
+name = "U2Net"
+uuid = "206d935d-8048-42a3-996d-9616aac6bc66"
+authors = ["Rishabh Varshney <rishabhvarshney14@gmail.com>"]
+version = "0.1.0"
+
+[deps]
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
+
+[compat]
+julia = "^1"
