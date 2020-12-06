@@ -1,9 +1,15 @@
+@inline add_dim(x) = reshape(x, (size(x)..., 1)) 
+
 function upsample(input, o_size)
     h, w, c, n = size(input)
     oh, ow, _, _ = size(o_size)
     output = zeros(oh, ow, c, n)
     for i in 1:n
-        output[:,:,:,1] = imresize(input[:, :, :, i], (oh, ow, c))
+        if c == 1
+            output[:,:,:,i] = add_dim(imresize(input[:,:,1,i], (oh, ow)))
+        else
+            output[:,:,:,i] = imresize(input[:, :, :, i], (oh, ow, c))
+        end
     end
     return output
 end
